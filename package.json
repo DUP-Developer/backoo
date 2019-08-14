@@ -1,0 +1,18 @@
+{
+  "name": "backoo",
+  "version": "0.0.1",
+  "description": "System for controll of the other aplications, only the API the get and given the data about other aplications development for me.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.15",
+    "lowdb": "^1.0.0",
+    "restify": "^8.4.0",
+    "restify-plugins": "^1.6.0"
+  }
+}
