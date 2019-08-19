@@ -1,0 +1,53 @@
+[{
+    "group": "anonymous",
+    "permissions": [{
+        "resource": "user/login",
+        "methods": ["POST"],
+        "action": "allow"
+      },
+      {
+        "resource": "*",
+        "methods": "*",
+        "action": "allow"
+      }
+    ]
+  },
+  {
+    "group": "supervisor",
+    "permissions": [{
+        "resource": "cliente/*",
+        "methods": ["GET", "POST", "PUT", "DELETE"],
+        "action": "allow"
+      },
+      {
+        "resource": "usuario/*",
+        "methods": ["GET", "POST", "PUT", "DELETE"],
+        "action": "allow"
+      },
+      {
+        "resource": "usuario/:id/clientes/",
+        "methods": ["GET", "POST", "PUT", "DELETE"],
+        "action": "allow"
+      }
+    ]
+  },
+  {
+    "group": "consultor",
+    "permissions": [{
+        "resource": "cliente/*",
+        "methods": ["GET", "POST", "PUT", "DELETE"],
+        "action": "allow"
+      },
+      {
+        "resource": "usuario/*",
+        "methods": ["GET", "PUT"],
+        "action": "allow"
+      },
+      {
+        "resource": "usuario/:id/clientes/",
+        "methods": ["GET", "POST", "PUT", "DELETE"],
+        "action": "allow"
+      }
+    ]
+  }
+]

@@ -1,42 +1,33 @@
-var restify= require('restify');
-var db = require('./database')
-var server = restify.createServer();
-const restifyPlugins = require('restify-plugins');
+import Express from 'express'
+import Http from 'http'
+import core from './src/core'
+import bodyParser from 'body-parser'
 
+/**
+ *
+ * instance server
+ *
+ */
+const app = Express()
+const Server = Http.Server(app)
 
-// server.use(restify.bodyParser({
-//   requestBodyOnGet: true
-// }));
-server.use(restifyPlugins.jsonBodyParser({
-  mapParams: true
-}));
-server.use(restifyPlugins.acceptParser(server.acceptable));
-server.use(restifyPlugins.queryParser({
-  mapParams: true
-}));
-server.use(restifyPlugins.fullResponse());
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
-server.get('/info', (req, res, next) => {
-  res.send({
-    data: db.all() || null
-  })
-  next()
-});
+/**
+ *
+ * runner the core (routes modules, middlewares modules)
+ *
+ */
 
-server.get('/info/:app', (req, res, next) => {
-  res.send({
-    data: db.search({app: req.params.app})
-  })
-  next()
-});
+core.loadResources(app)
 
-server.post('/info', (req, res, next) => {  
-  res.send({
-    data: db.insert('logs', req.body)
-  })
-  next()
-});
+/**
+ *
+ * start server
+ *
+ */
 
-server.listen(8080, function () {
-  console.log('%s listening at %s', server.name, server.url);
-});
+Server.listen('3002', () => {
+  console.log('funfando...')
+})

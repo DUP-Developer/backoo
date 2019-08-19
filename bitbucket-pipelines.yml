@@ -1,0 +1,18 @@
+# This is a sample build configuration for JavaScript.
+# Check our guides at https://confluence.atlassian.com/x/14UWN for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+
+pipelines:
+  default:
+    - step:
+        name: Deployment now
+        deployment: production # can be test, staging or production.
+        # trigger: manual  # Uncomment to make this a manual deployment.
+        script:
+          # - echo "Atualizando o npm"
+          # - npm install
+          # - npm run build
+          - echo "Deploying to environment"
+          - ssh -i ~/.ssh/config root@165.227.119.104 "cd /home/microcredito/api; git pull auth-origin production"
