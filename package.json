@@ -44,6 +44,6 @@
     "mysql": "^2.16.0",
     "mysql2": "^1.6.1",
     "node-telegram-bot-api": "^0.30.0",
-    "sequelize": "^4.38.0"
+    "sequelize": "^5.15.1"
   }
 }
